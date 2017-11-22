@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jared Games</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'lib/css/css.css' %}">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Javascripts -->
+    <script src="{% static 'lib/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="container-fluid" style="background-color: darkred; color: #e8e8e8">
+        <header>
+            <div class="jumbotron text-center">
+                <img class="img-responsive"  align="right" width="100px" height="100px" src="{% static 'images/X_logo.png' %}"/>
+                <center><img class="img-responsive" src="{% static 'images/GamesTM_logo.png' %}"/></center>
+
+            </div>
+        </header>
+    </div>
+
+    <div class="container-fluid" style="background-color: darkred">
+        <div class="container-fluid">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand active" href="{% url 'home' %}"><img class="img-responsive"  align="right" width="25px" height="25px" src="{% static 'images/X_logo.png' %}"/></a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active"><a href="#">Juegos</a></li>
+                        <li><a href="#">Desarrolladoras</a></li>
+                     </ul>
+                </div>
+            </nav>
+
+        </div>
+
+        <div class="container" style="background-color: #0f0f0f; color:white">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+            <div class="text-center">
+                <h1 style="color: aqua;"> Juegos</h1>
+                <p>Mostrar Juegos....</p>
+            </div>
+
+            <p align="justify" style="font-family: 'Trebuchet MS'; font-size: 20px ">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-pull-12">
+                    <h3>Lista Juegos <i class="fa fa-gamepad" style="font-size:48px;color:red"></i> </h3>
+
+                    <table id="table_juegos" class="table table-responsive">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Fecha</th>
+                            <th>Precio</th>
+                            <th>Desarrolladora</th>
+                            <th>Eliminar</th>
+                            <th>Actualizar</th>
+                            <th>Ver</th>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
+            </div>
+            <script>
+                function search(nameKey,juegos){
+
+                    $.ajax({
+                        url: "http://localhost:8000/api/desarrolladora/"+nameKey,
+                        type: 'GET',
+                        success: function (desarrolladora){
+                            var identificador= juegos.id;
+                            console.log(desarrolladora.id);
+                            $('#table_juegos').append(
+                                '<tr>' +
+                                '<td>' + juegos.nombre + '</td>' +
+                                '<td>' + juegos.fecha_publicacion + '</td>' +
+                                '<td>' + juegos.precio + '</td>' +
+                                '<td>' + desarrolladora.nombre+'</td>' +
+                                '<td> <button class="btn-danger btn-sm"><i class="fa fa-cut" style="font-size:24px;color:white"></i></button></td>' +
+                                '<td> <button class="btn-info btn-sm"><i class="fa fa-save" style="font-size:24px;color:white"></i></button></td>'+
+                                '<td><a class="txt-success" href="/detalles/'+identificador+'"><i class="fa fa-binoculars" style="font-size:24px;color:green"></i></a> </td>'+
+                                '</tr>');
+
+                        }
+                    });
+
+                }
+                $.ajax({
+                    url: 'http://localhost:8000/api/juegos/',
+                    type: 'GET',
+                    success: function (juegos) {
+                        $.each(juegos, function (index, juegos) {
+                            search(juegos.desarrolladora, juegos);
+
+                        })
+                    },
+                    error: function () {
+                        console.log('An error has occurred');
+                    }
+                });
+            </script>
+
+
+
+
+
+
+
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-5">
+            <img class="img-responsive" src="{% static 'images/homura.png' %}">
+        </div>
+
+
+        </div>
+    </div>
+<div class="container-fluid" style="background-color: #0f0f0f">
+    <h3 style="color: white"> <center>Made By ErikJBrubeck</center></h3>
+
+</div>
+
+
+</body>
+
+</html>

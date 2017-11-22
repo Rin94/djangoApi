@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Jared Games</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'lib/css/css.css' %}">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Javascripts -->
+    <script src="{% static 'lib/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div class="row">
+
+  		<div class="col-md-6">
+
+			<h1>{{funcion}} Juego</h1>
+			<form action="" method="POST"  class="form-horizontal" >
+
+			{% csrf_token %}
+
+			        <div class="form-group">
+			            <label class="col-sm-3 control-label">{{ field.label }}
+			            <div class="col-sm-9">
+			                {{ form}}
+
+			            </div>
+			        </div>
+
+
+
+
+				<button type="submit" class="btn btn-primary btn-lg">
+					Guardar
+				</button>
+				<a class="btn btn-info btn-lg" href="{% url "juegos" %}">
+					Cancelar
+				</a>
+
+			</form>
+		</div>
+  		<div class="col-md-6"></div>
+	</div>
+
+</body>
+</html>

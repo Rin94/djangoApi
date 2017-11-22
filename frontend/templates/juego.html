@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jared Games</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'lib/css/css.css' %}">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Javascripts -->
+    <script src="{% static 'lib/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="container-fluid" style="background-color: darkred; color: #e8e8e8">
+        <header>
+            <div class="jumbotron text-center">
+                <img class="img-responsive"  align="right" width="100px" height="100px" src="{% static 'images/X_logo.png' %}"/>
+                <center><img class="img-responsive" src="{% static 'images/GamesTM_logo.png' %}"/></center>
+
+            </div>
+        </header>
+    </div>
+
+    <div class="container-fluid" style="background-color: darkred">
+        <div class="container-fluid">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand active" href="{% url 'home' %}"><img class="img-responsive"  align="right" width="25px" height="25px" src="{% static 'images/X_logo.png' %}"/></a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active"><a href="#">Juegos</a></li>
+                        <li><a href="#">Desarrolladoras</a></li>
+                     </ul>
+                </div>
+            </nav>
+
+        </div>
+
+        <div class="container" style="background-color: #0f0f0f; color:white">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-md-offset-0">
+            <br/>
+            <br/>
+            <div class="text-center">
+
+                <h1 style="color: aqua;"><i class="fa fa-gamepad" style="font-size:48px;color:red"></i> Juego <i class="fa fa-gamepad" style="font-size:48px;color:red"></i></h1>
+
+
+            </div>
+            <div align="center">
+             <h4>Nombre: </h4>
+                <h3 style="color: red">{{ juego.nombre }}</h3>
+             <h4>Fecha: </h4>
+                <h3 style="color: red">{{ juego.fecha_publicacion }}</h3>
+             <h4>Precio:</h4>
+                 <h3 style="color: red">{{ juego.precio }}<i class="fa fa-dollar" style="font-size:20px;color:red"></i></h3>
+
+                <h4>Desarrolladora:</h4>
+                <h3 style="color: red">  {{ juego.desarrolladora.nombre }}</h3>
+            </div>
+
+            <div align="right" class="col-md-offset-2">
+                <a href="{% url 'juegos' %}"> <i class="fa fa-rotate-left" style="font-size:48px;color:red"></i></a>
+
+            </div>
+
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-5">
+            <br/>
+            <br/>
+            <img class="img-responsive img-thumbnail" src="{% static 'images/Xenoblade_Chronicles_2_Boxart.jpg' %}">
+        </div>
+
+
+        </div>
+    </div>
+<div class="container-fluid" style="background-color: #0f0f0f">
+    <h3 style="color: white"> <center>Made By ErikJBrubeck</center></h3>
+
+</div>
+
+
+</body>
+
